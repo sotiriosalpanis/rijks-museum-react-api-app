@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Collections from './components/Collections'
 import CollectionShow from './components/CollectionShow'
 import ArtworkShow from './components/ArtworkShow'
+import ColourShow from './components/ColourShow'
 
 function App() {
   return ( 
@@ -21,7 +22,10 @@ function App() {
         <Route exact path="/collections/:collectionId">
           <CollectionShow />
         </Route>
-        <Route path="/collections/gallery/:id">
+        <Route exact path="/collections/colour/:collectionColour">
+          <ColourShow />
+        </Route>
+        <Route path="/collections/collection/:id">
           <ArtworkShow />
         </Route>
       </Switch>

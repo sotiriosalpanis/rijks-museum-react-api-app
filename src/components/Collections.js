@@ -18,14 +18,43 @@ const Collections = () => {
   }, [])
 
   if (!collection) return null
-  
+
+
   return (
-    <div className="show">
-      {collection[0].facets.map((facet) => {
-        return <Link to={`/collections/${facet.key}`} key={facet.key}>{facet.key}</Link>
-      })}
+    <div className="hero is-fullheight"       
+      style= {{
+        backgroundImage: 'url(https://lh3.googleusercontent.com/J-mxAE7CPu-DXIOx4QKBtb0GC4ud37da1QK7CzbTIDswmvZHXhLm4Tv2-1H3iBXJWAW_bHm7dMl3j5wv_XiWAg55VOM=s0)',
+      }}>
+      <div>
+        <div className="columns">
+          <div className="column is-one-quarter-desktop is-one-third-tablet p-6 show">
+            <p className="title is-3 pb-5">Visit one of our rooms</p>
+            {collection[0].facets.map((facet) => {
+              return <div key={facet.key} className="subtitle is-5">
+                <Link to={`/collections/${facet.key}`}>
+                  <p>{facet.key}</p>
+                </Link>
+              </div>
+            })}
+          </div>
+          <div className="column is-one-fifth-desktop is-one-third-tablet show">
+            {collection[7].facets.map((facet) => {
+              const hex = facet.key.trim().split('#').join('')
+              return <div key={facet.key} className="subtitle is-5">
+                <Link to={`/collections/colour/${hex}`}>
+                  <div className="colour-button" style={{
+                    backgroundColor: `#${hex}`,
+                  }}></div>
+                </Link>
+              </div>
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Collections
+
+// 

@@ -7,14 +7,13 @@ const ArtworkShow = () => {
 
   const [art, setArt] = useState(null)
   const [show, setShow] = useState('hidden')
-  const key = getAccessKey()
+  const accessKey = getAccessKey()
 
   const { id } = useParams()
-  console.log('ARTWORK SHOW', id)
 
   useEffect(() => {
     const getData = async() => {
-      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/${id}key=${key}`)
+      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/${id}?key=${accessKey}`)
       setArt(data.artObject)
     }
     getData()
@@ -39,7 +38,7 @@ const ArtworkShow = () => {
           <div>
             <p className="title is-3">{art.title}</p>
             <p className="subtitle is-4 is-italic">{art.label.makerLine}</p>
-            <p className="subtitle is-5">{art.plaqueDescriptionEnglish}</p>
+            <p className="subtitle is-5">{art.label.description}</p>
           </div>
         </div>
       </div>

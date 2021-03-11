@@ -4,26 +4,25 @@ import { useParams } from 'react-router-dom'
 import { getAccessKey } from '../auth/key'
 import CollectionCard from './CollectionCard'
 
-const CollectionShow = () => {
+
+const ColourShow = () => {
 
   const accessKey = getAccessKey()
 
-  let { collectionId } = useParams()
-  collectionId = collectionId.split(' ').join('%20')
-
+  const { collectionColour } = useParams()
+  
   const [collection, setCollection] = useState(null)  
 
   useEffect(() => {
     const getData = async() => {
-      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&ps=20&s=chronologic&f.hnrCode.section.sort=${collectionId}`)
+      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&f.normalized32Colors.hex=%23${collectionColour}`)
       setCollection(data.artObjects)
-      console.log(data)
     }
     getData()
   }, [])
   
   if (!collection) return null
-
+  console.log('COLOUR AGAIN', collectionColour)
   return (
     <div className="columns is-multiline">
       {collection.map(art => {
@@ -36,6 +35,4 @@ const CollectionShow = () => {
   )
 }
 
-export default CollectionShow
-
-
+export default ColourShow

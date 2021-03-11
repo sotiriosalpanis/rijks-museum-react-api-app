@@ -5,7 +5,7 @@ const CollectionCard = ({ title, webImage, principalOrFirstMaker, objectNumber }
 
   return (
     <div className="column is-one-quarter-desktop is-one-third-tablet">
-      <Link to={`/gallery/${objectNumber}`}>
+      <Link to={`/collections/collection/${objectNumber}`}>
         <div className="card">
           <div className="card-header">
             <div className="card-header-title">{title}</div>
