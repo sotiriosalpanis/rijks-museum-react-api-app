@@ -23,7 +23,7 @@ const Navbar = () => {
                 <Link to="/collections" className="navbar-item">
                 Collections
                 </Link>
-                <Link to="/collections/collection" className="navbar-item">
+                <Link to="/collections/" className="navbar-item">
                 Collection
                 </Link>
                 <hr className="navbar-divider" />

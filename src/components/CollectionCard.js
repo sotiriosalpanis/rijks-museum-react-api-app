@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const CollectionCard = ({ title, webImage, principalOrFirstMaker, objectNumber }) => {
+
   return (
     <div className="column is-one-quarter-desktop is-one-third-tablet">
-      <Link to={`/collections/collection/${objectNumber}`}>
+      <Link to={`/gallery/${objectNumber}`}>
         <div className="card">
           <div className="card-header">
             <div className="card-header-title">{title}</div>

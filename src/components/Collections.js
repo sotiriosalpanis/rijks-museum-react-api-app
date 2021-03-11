@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getAccessKey } from '../auth/key'
+import { Link } from 'react-router-dom'
 
 const Collections = () => {
 
   const key = getAccessKey()
 
-  const [collection, setCollection] = useState([])  
+  const [collection, setCollection] = useState(null)  
 
   useEffect(() => {
     const getData = async() => {
@@ -16,13 +17,12 @@ const Collections = () => {
     getData()
   }, [])
 
-  console.log(collection[0].facets)
-
-
+  if (!collection) return null
+  
   return (
     <div className="show">
-      {collection[0].facets.map(facet => {
-        return <p key={facet.key}>{facet.key}</p>
+      {collection[0].facets.map((facet) => {
+        return <Link to={`/collections/${facet.key}`} key={facet.key}>{facet.key}</Link>
       })}
     </div>
   )

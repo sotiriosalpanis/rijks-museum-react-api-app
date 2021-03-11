@@ -18,10 +18,10 @@ function App() {
         <Route exact path="/collections">
           <Collections />
         </Route>
-        <Route exact path="/collections/:collection">
+        <Route exact path="/collections/:collectionId">
           <CollectionShow />
         </Route>
-        <Route path="/collections/collection/:id">
+        <Route path="/collections/gallery/:id">
           <ArtworkShow />
         </Route>
       </Switch>
