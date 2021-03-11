@@ -1,7 +1,32 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Collections from './components/Collections'
+import CollectionShow from './components/CollectionShow'
+import ArtworkShow from './components/ArtworkShow'
 
 function App() {
-  return <h1>Hello World</h1>
+  return ( 
+    <BrowserRouter>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/collections">
+          <Collections />
+        </Route>
+        <Route exact path="/collections/:collection">
+          <CollectionShow />
+        </Route>
+        <Route path="/collections/collection/:id">
+          <ArtworkShow />
+        </Route>
+      </Switch>
+    </BrowserRouter> 
+  )
 }
 
 export default App
