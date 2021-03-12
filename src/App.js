@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Collections from './components/Collections'
+import MakeYourOwnCollection from './components/MakeYourOwnCollection'
 import CollectionShow from './components/CollectionShow'
 import ArtworkShow from './components/ArtworkShow'
 import ColourShow from './components/ColourShow'
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/collections/:collectionId">
           <CollectionShow />
+        </Route>
+        <Route exact path="/make-your-own-collection">
+          <MakeYourOwnCollection />
         </Route>
         <Route exact path="/collections/colour/:collectionColour">
           <ColourShow />

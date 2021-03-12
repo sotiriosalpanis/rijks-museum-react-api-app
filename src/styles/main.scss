@@ -24,6 +24,7 @@
 .colour-button {
   width: 50px;
   height: 50px;
+  border: 1px solid black;
 }
 
 .columns {
@@ -41,4 +42,11 @@
 
 .hidden {
   opacity: 0;
+}
+
+.search-box{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 30%;
+  background-color: rgba(255, 255, 255, 0.4);
 }
