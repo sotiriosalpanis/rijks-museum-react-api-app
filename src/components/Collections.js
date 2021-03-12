@@ -9,6 +9,7 @@ const Collections = () => {
   const key = getAccessKey()
 
   const [collection, setCollection] = useState(null)  
+  const [backgroundImage, setBackgroundImage] = useState(null) 
 
   useEffect(() => {
     const getData = async() => {
@@ -18,20 +19,35 @@ const Collections = () => {
     getData()
   }, [])
 
+  useEffect(() => {
+    const getData = async() => {
+      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/?key=${key}&toppieces=true`)
+      setBackgroundImage(data.artObjects[Math.floor(Math.random() * data.artObjects.length)].webImage.url)
+    }
+    getData()
+  }, [])
+
   if (!collection) return null
 
 
   return (
-    <div className="hero is-fullheight"
-      style= {{
-        backgroundImage: 'url(https://lh3.googleusercontent.com/J-mxAE7CPu-DXIOx4QKBtb0GC4ud37da1QK7CzbTIDswmvZHXhLm4Tv2-1H3iBXJWAW_bHm7dMl3j5wv_XiWAg55VOM=s0)',
-      }}>
-      <div>
+    <div className="hero is-fullheight">
+      <img src={backgroundImage} alt="image" 
+        style= {{
+          position: 'relative',
+          top: 0,
+        }}
+      />       
+      <section
+        style= {{
+          position: 'absolute',
+        }}
+      >
         <div className="columns">
-          <div className="column is-one-quarter-desktop is-one-third-tablet p-6 show">
-            <p className="title is-3 pb-5">Visit one of our rooms</p>
+          <div className="column p-6 show">
+            <p className="title is-2 pb-5">Visit one of our rooms</p>
             {collection[0].facets.map((facet) => {
-              return <div key={facet.key} className="subtitle is-5">
+              return <div key={facet.key} className="subtitle is-4">
                 <Link to={`/collections/${facet.key}`}>
                   <p>{facet.key}</p>
                 </Link>
@@ -39,11 +55,9 @@ const Collections = () => {
             })}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
 
 export default Collections
-
-

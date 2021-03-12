@@ -1,12 +1,16 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { getAccessKey } from '../auth/key'
+import { getAccessKey, languageSelected } from '../auth/key'
 
 const ArtworkShow = () => {
 
   const [art, setArt] = useState(null)
   const [show, setShow] = useState('hidden')
+
+  const language = languageSelected()
+  console.log(language)
+
   const accessKey = getAccessKey()
 
   const history = useHistory()
@@ -15,7 +19,7 @@ const ArtworkShow = () => {
 
   useEffect(() => {
     const getData = async() => {
-      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/${id}?key=${accessKey}`)
+      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/${language}/collection/${id}?key=${accessKey}`)
       setArt(data.artObject)
     }
     getData()
@@ -33,7 +37,7 @@ const ArtworkShow = () => {
 
   const handleAudioPlay = event => {
     const audioMessage = new SpeechSynthesisUtterance(event.target.value)
-    window.speechSynthesis.speak(audioMessage)
+    window.speechSynthesis.speaking ? window.speechSynthesis.cancel() : window.speechSynthesis.speak(audioMessage)
   }
 
   if (!art) return null
@@ -48,7 +52,7 @@ const ArtworkShow = () => {
           <p className="title is-3">{art.title}</p>
           <p className="subtitle is-4 is-italic">{art.label.makerLine}</p>
           <p className="subtitle is-5">{art.label.description}</p>
-          <button onClick={handleAudioPlay} value={art.title + art.label.makerLine + art.label.description}>Play audio</button>
+          <button onClick={handleAudioPlay} value={art.title + art.label.makerLine + art.label.description} className="mt-5">Audio on/off</button>
         </div>
       </div>
     </div>

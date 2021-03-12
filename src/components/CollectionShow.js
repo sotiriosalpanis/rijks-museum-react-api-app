@@ -7,7 +7,7 @@ import CollectionCard from './CollectionCard'
 const CollectionShow = () => {
 
   const accessKey = getAccessKey()
-
+  
   let { collectionId } = useParams()
   collectionId = collectionId.split(' ').join('%20')
 
@@ -17,10 +17,9 @@ const CollectionShow = () => {
     const getData = async() => {
       const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&ps=20&s=chronologic&f.hnrCode.section.sort=${collectionId}`)
       setCollection(data.artObjects)
-      console.log(data)
     }
     getData()
-  }, [])
+  })
   
   if (!collection) return null
 
@@ -37,5 +36,3 @@ const CollectionShow = () => {
 }
 
 export default CollectionShow
-
-
