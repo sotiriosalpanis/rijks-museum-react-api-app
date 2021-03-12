@@ -2,8 +2,6 @@ $family-primary: 'Jost', sans-serif;
 
 @import '~bulma/bulma.sass';
 
-.body 
-
 .hero {
   background-image: url('https://www.miesarch.com/uploads/images/works/3319-21649.jpg');
   background-repeat: no-repeat;
@@ -13,6 +11,12 @@ $family-primary: 'Jost', sans-serif;
 .hero-body {
   flex-direction: column;
   justify-content: center;
+}
+
+.main-title {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
+  padding: 10px;
 }
 
 .image-container {
@@ -40,18 +44,20 @@ $family-primary: 'Jost', sans-serif;
   }
   background-color: rgba(0, 0, 0, 0.7);
   display: block; 
-  opacity: 0.7;
+  // opacity: 0.7;
 }
 
 .hidden {
   opacity: 0;
 }
 
-.search-box{
+.search-box {
+  margin: 1px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 30%;
-  background-color: rgba(255, 255, 255, 0.4);
+  max-width: 99%;
+  // min-width: 35%;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .image {
@@ -60,6 +66,7 @@ $family-primary: 'Jost', sans-serif;
 
 .image-container {
   position: relative;
+  background-color: #333333;
 }
 
 .artwork-info {
@@ -70,12 +77,30 @@ $family-primary: 'Jost', sans-serif;
 
 .artwork-info-button {
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
 }
 
 .return-button {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-content {
+  margin-top: auto;
+}
+
+.card-image {
+  padding: 1em;
+  img {
+    height: 100%;
+    object-fit:contain;
+  }
 }

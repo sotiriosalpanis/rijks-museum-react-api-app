@@ -9,20 +9,21 @@ const ColourShow = () => {
 
   const accessKey = getAccessKey()
 
-  const { collectionColour } = useParams()
+  const { collectionSearch } = useParams()
   
-  const [collection, setCollection] = useState(null)  
+  const [collection, setCollection] = useState(null)
+
+  const searchURL = `https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&${collectionSearch}`
 
   useEffect(() => {
     const getData = async() => {
-      const { data } = await axios.get(`https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&f.normalized32Colors.hex=%23${collectionColour}`)
+      const { data } = await axios.get(searchURL)
       setCollection(data.artObjects)
     }
     getData()
   }, [])
   
   if (!collection) return null
-  console.log('COLOUR AGAIN', collectionColour)
   return (
     <div className="columns is-multiline">
       {collection.map(art => {

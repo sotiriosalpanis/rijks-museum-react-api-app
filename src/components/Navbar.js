@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const [language, setLanguage] = useState('English')
+  const [language, setLanguage] = useState('en')
 
   const handleLanguage = (event) => {
-    if (event.target.innerHTML === 'English') setLanguage('English')
-    if (event.target.innerHTML === 'Dutch') setLanguage('Dutch')
+    if (event.target.innerHTML === 'English') setLanguage('en')
+    if (event.target.innerHTML === 'Dutch') setLanguage('nl')
   }
 
   window.localStorage.setItem('language', language)
@@ -40,10 +40,10 @@ const Navbar = () => {
             </div>
             <div className="navbar-item">
               <div className="buttons">
-                <a onClick={handleLanguage} className={language === 'English' ? 'button is-black' : 'button is-light'}>
+                <a onClick={handleLanguage} className={language === 'en' ? 'button is-black' : 'button is-light'}>
                   English
                 </a>
-                <a onClick={handleLanguage} className={language === 'Dutch' ? 'button is-black' : 'button is-light'}>
+                <a onClick={handleLanguage} className={language === 'nl' ? 'button is-black' : 'button is-light'}>
                 Dutch
                 </a>
               </div>
@@ -56,5 +56,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-{/* <input className={`input ${errors.password ? 'is-danger' : ''}`} */}
