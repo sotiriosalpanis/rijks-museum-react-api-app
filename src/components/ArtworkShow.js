@@ -10,7 +10,6 @@ const ArtworkShow = () => {
   const accessKey = getAccessKey()
 
   const history = useHistory()
-  // console.log(history)
 
   const { id } = useParams()
 
