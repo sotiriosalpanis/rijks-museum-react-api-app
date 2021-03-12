@@ -28,18 +28,13 @@ const ArtworkShow = () => {
   
   return (
     <div className="image-container">
-      <div className='artwork columns'
-        style= {{
-          backgroundImage: `url(${art.webImage.url})`,
-        }}
-      >
-        <button onClick={handleDetailShow} className="button is-black m-5">i</button>
-        <div className={`column is-one-third-desktop is-one-third-tablet p-6 ${show}`}>
-          <div>
-            <p className="title is-3">{art.title}</p>
-            <p className="subtitle is-4 is-italic">{art.label.makerLine}</p>
-            <p className="subtitle is-5">{art.label.description}</p>
-          </div>
+      <img src={art.webImage.url} className='artwork columns'/>
+      <button onClick={handleDetailShow} className="button is-black m-5 artwork-info-button">i</button>
+      <div className={`column is-one-third-desktop is-one-third-tablet p-6 ${show} artwork-info`}>
+        <div>
+          <p className="title is-3">{art.title}</p>
+          <p className="subtitle is-4 is-italic">{art.label.makerLine}</p>
+          <p className="subtitle is-5">{art.label.description}</p>
         </div>
       </div>
     </div>
