@@ -32,6 +32,11 @@ const ArtworkShow = () => {
     history.goBack()
   }
 
+  const handleAudioPlay = event => {
+    const audioMessage = new SpeechSynthesisUtterance(event.target.value)
+    window.speechSynthesis.speak(audioMessage)
+  }
+
   if (!art) return null
   
   return (
@@ -44,6 +49,7 @@ const ArtworkShow = () => {
           <p className="title is-3">{art.title}</p>
           <p className="subtitle is-4 is-italic">{art.label.makerLine}</p>
           <p className="subtitle is-5">{art.label.description}</p>
+          <button onClick={handleAudioPlay} value={art.title + art.label.makerLine + art.label.description}>Play audio</button>
         </div>
       </div>
     </div>
