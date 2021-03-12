@@ -9,11 +9,11 @@ const ColourShow = () => {
 
   const accessKey = getAccessKey()
 
-  const { collectionSearch } = useParams()
+  const params = useParams()
   
   const [collection, setCollection] = useState(null)
 
-  const searchURL = `https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&${collectionSearch}`
+  const searchURL = `https://www.rijksmuseum.nl/api/en/collection/?key=${accessKey}&imgonly=True&${params.collectionColour}`
 
   useEffect(() => {
     const getData = async() => {
@@ -22,7 +22,7 @@ const ColourShow = () => {
     }
     getData()
   }, [])
-  
+
   if (!collection) return null
   return (
     <div className="columns is-multiline">

@@ -39,6 +39,8 @@ const MakeYourOwnCollections = () => {
     setSearch(searchString)
   })
 
+  console.log('search', search)
+
   const handleOptionChoice = (event) => {
     const newOptionChoices = { ...options, [event.target.name]: event.target.value }
     setOptions(newOptionChoices)
@@ -121,7 +123,7 @@ const MakeYourOwnCollections = () => {
           </select>
           <div className="control">
             <button className="button is-dark m-4">
-              {(!search) ? <Link to='/collections/colour/all' className="button is-dark">Submit</Link> : <Link to={`/collections/colour/${search}`}>Submit</Link>}
+              <Link to={`/collections/colour/${search}`}>Submit</Link>
             </button>
           </div>
         </div>
